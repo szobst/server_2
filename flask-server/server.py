@@ -246,7 +246,6 @@ def get_model():
 
 """"
 def get_model():
-
     # x = int(x[0:2])
     # y = int(y[0:2])
     shooter = request.args.get('shooter')
@@ -261,10 +260,8 @@ def get_model():
   
     angle = loc2angle(x = shooter[0], y = shooter[1])
     dist = loc2distance(x = shooter[0], y = shooter[1])
-
     if shooter[0] is None and shooter[1] is None:
         return jsonify({"error": "Brak wymaganych parametrów"}), 400
-
     response = LogisticRegression_predict_proba(position_x=shooter[0],
                                                 position_y=shooter[1],
                                                 distance_to_goalM = dist,
@@ -274,7 +271,6 @@ def get_model():
                                                 Number_Intervening_Teammates=0,
                                                 isFoot=1,
                                                 isHead=0)
-
     #print(response)
     res = str(response)
     #return {"response":res}
@@ -283,4 +279,4 @@ def get_model():
 """
 
 if __name__ == "__main__":
-    app.run(debug = True, host="0.0.0.0", port=5000)
+    app.run(debug = True)
